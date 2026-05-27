@@ -1208,6 +1208,26 @@ contains
         end if
 #endif
 
+#ifdef __GFORTRAN__
+        ! Work around GCC PR fortran/122957: as of GCC 16, gfortran rejects the
+        ! combination of -fdefault-integer-8 and user-defined derived-type I/O
+        ! (the corresponding miscompile, GCC #108680, was the underlying defect).
+        ! Force the same master-side auxiliary-copy path used by the Intel branch
+        ! above, which avoids the DTIO write entirely.
+        intel_bug_workaround = .true.
+        wamp % nprow = 1
+        wamp % npcol = 1
+        wamp % blacs_context = -1
+        wamp % CV_is_scalapack = this % wamp(this % nfdm + 1) % CV_is_scalapack
+#if defined(usempi) && defined(scalapack)
+        if (wamp % CV_is_scalapack) then
+            call blacs_get(-1_blasint, 0_blasint, wamp % blacs_context)
+            call blacs_gridinit(wamp % blacs_context, 'R', 1_blasint, 1_blasint)
+        end if
+#endif
+        call wamp % init_CV(nchan, nstat)
+#endif
+
         if (rform == 'F') then
             if (myrank == master) then
                 write (lurmt, '(10I7)') keyrm, nrmset, nrec, ninfo, ndata
@@ -1221,8 +1241,10 @@ contains
                 if (intel_bug_workaround) then
                     call wamp % redistribute(this%wamp(this%nfdm + 1), this%wamp(this%nfdm + 1)%blacs_context)
                     write (lurmt, '(4D20.13)') wamp % CV(1:nchan, 1:nstat)
+#ifndef __GFORTRAN__
                 else
                     write (lurmt, '(dt(4,20,13))') this % wamp(this % nfdm + 1)  ! derived-type I/O (formatted)
+#endif
                 end if
                 !if (npole > 0) write (lurmt, '(4D20.13)') ((solution % ci_vec % cv(i,j),i=1,nocsf),j=1,npole)
                 !if (ibut > 0) write (lurmt, '(4D20.13)') ((bcoef(i,j),i=1,3),j=1,nchan)
@@ -1233,9 +1255,11 @@ contains
                 if (intel_bug_workaround) then
                     ! a dummy call from non-master tasks to collaborate with redistribution to master above
                     call wamp % redistribute(this%wamp(this%nfdm + 1), this%wamp(this%nfdm + 1)%blacs_context)
+#ifndef __GFORTRAN__
                 else
                     ! a dummy call from non-master tasks to collaborate with master's derived-type I/O above
                     call this % wamp(this % nfdm + 1) % formatted_write(-1, '', v_list, io_stat, io_msg)
+#endif
                 end if
             end if
         else
@@ -1251,8 +1275,10 @@ contains
                 if (intel_bug_workaround) then
                     call wamp % redistribute(this%wamp(this%nfdm + 1), this%wamp(this%nfdm + 1)%blacs_context)
                     write (lurmt) wamp % CV(1:nchan, 1:nstat)
+#ifndef __GFORTRAN__
                 else
                     write (lurmt) this % wamp(this % nfdm + 1)  ! derived-type I/O (unformatted)
+#endif
                 end if
                 !if (npole > 0) write (lurmt) ((solution % ci_vec % cv(i,j),i=1,nocsf),j=1,npole)
                 !if (ibut > 0) write (lurmt) ((bcoef(i,j),i=1,3),j=1,nchan)
@@ -1263,9 +1289,11 @@ contains
                 if (intel_bug_workaround) then
                     ! a dummy call from non-master tasks to collaborate with redistribution to master above
                     call wamp % redistribute(this%wamp(this%nfdm + 1), this%wamp(this%nfdm + 1)%blacs_context)
+#ifndef __GFORTRAN__
                 else
                     ! a dummy call from non-master tasks to collaborate with master's derived-type I/O above
                     call this % wamp(this % nfdm + 1) % unformatted_write(-1, io_stat, io_msg)
+#endif
                 end if
             end if
         end if

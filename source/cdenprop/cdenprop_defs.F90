@@ -184,8 +184,8 @@
          procedure :: unformatted_write
          procedure :: stream_write
 
-         generic :: write(formatted) => formatted_write
-         generic :: write(unformatted) => unformatted_write
+         ! generic :: write(formatted) => formatted_write
+         ! generic :: write(unformatted) => unformatted_write
       end type CIvect
 
       type property_integrals
