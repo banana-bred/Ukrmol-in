@@ -1706,9 +1706,9 @@ end type molecular_orbital_basis_obj
         !   offsets in the linear storage arrays are stored for later convenience.
 
         !$omp parallel shared(nthreads)
-        !$omp master
+        !$omp masked
         nthreads = omp_get_num_threads()
-        !$omp end master
+        !$omp end masked
         !$omp end parallel
 
         if (step == 1) then
@@ -2552,9 +2552,9 @@ end type molecular_orbital_basis_obj
         allocate(Wv(size(Rv, 1), size(Rv, 2)), stat = ierr2)
 
         !$omp parallel
-        !$omp master
+        !$omp masked
         nthreads = omp_get_num_threads()
-        !$omp end master
+        !$omp end masked
         !$omp end parallel
 
         write (level2, '("Using parallel merge sort with ",I0," threads")') nthreads
