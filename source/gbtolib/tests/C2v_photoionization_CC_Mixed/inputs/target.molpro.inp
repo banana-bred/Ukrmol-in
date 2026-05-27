@@ -1,0 +1,57 @@
+***,CH4+ with DZP basis
+Gprint,basis;                                 ! Print basis information
+Gprint,civector;                              ! Print CI vector in MCSCF
+Gprint,orbital;                               ! Print orbitals in SCF and MCSCF
+
+SYMMETRY,X, Y
+basis=DZP
+geometry={
+C,,   0.000000000,   0.000000000,   0.000000000
+H,,   1.687916000,   0.000000000,   1.193537000
+H,,  -1.687916000,   0.000000000,   1.193537000
+H,,   0.000000000,   1.687916000,  -1.193537000
+H,,   0.000000000,  -1.687916000,  -1.193537000
+
+}
+
+method = 'HF'  ! set to HF or CASSCF in scripts
+
+IF (method.eq.'HF') THEN
+
+{hf;
+wf,nelec=9;
+orbprint,1000;
+}
+
+ELSE
+
+{hf;
+wf,nelec=9;
+orbprint,-1;
+}
+
+! First CASSCF run only for target states for which orbitals should be optimised
+{multi;
+closed,0,0,0,0;
+occ,0,0,0,0;
+
+natorb,print=1000;
+}
+
+! Second CASSCF run for all target states without orbital optimalisation
+!{multi;
+!closed,0,0,0,0;
+!occ,0,0,0,0;
+!
+!dont,orbital;
+!dm;
+!}
+
+! Saving density matrix for radden
+!{matrop; 
+!load,dm,den,2140.2;
+!write,dm;}								!save,dm,2140.2,DENSITY;} 
+
+ENDIF
+
+put,molden,CH4+.molden;

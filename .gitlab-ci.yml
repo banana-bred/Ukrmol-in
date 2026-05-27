@@ -1,0 +1,56 @@
+# see https://hub.docker.com/_/gcc/
+image: debian:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - build
+
+.build_template:
+  stage: build
+  before_script:
+    - apt update && apt -y install git g++ cmake make libblas-dev liblapack-dev libopenmpi-dev
+  script:
+    - cat /etc/os-release
+    - export CC=$(which mpicc)
+    - export CXX=$(which mpicxx)
+    - export FC=$(which mpifort)
+    - export FFLAGS="-fdefault-integer-8 -std=f2008 -pedantic-errors"
+    - cmake -D GBTOlib_Fortran_FLAGS="$GBTOlib_Fortran_FLAGS" .
+    - make
+    - make dist
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - ukrmol-in-*.tar.gz
+      # depending on your build setup it's most likely a good idea to cache outputs to reduce the build time
+      # cache:
+      #   paths:
+      #     - "*.o"
+
+build_double:
+  extends: .build_template
+  variables:
+    GBTOlib_Fortran_FLAGS: "-Dusempi;-Dsplitreduce;-Dmpithree"
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - ukrmol-in-*.tar.gz
+
+build_quad:
+  extends: .build_template
+  variables:
+    GBTOlib_Fortran_FLAGS: "-Dusempi;-Dsplitreduce;-Dmpithree;-Dusequadprec"
+  needs:
+    # Do not attempt to run the fp128 compilation until the fp64 works.
+    # Also, do not wait for any build artifacts.
+    - job: build_double
+      artifacts: false
+
+# run tests using the binary built before
+#test:
+#  stage: test
+#  script:
+#    - ./runmytests.sh
+

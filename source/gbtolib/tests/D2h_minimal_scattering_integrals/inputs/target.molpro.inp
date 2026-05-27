@@ -1,0 +1,16 @@
+***,H2
+ Gprint,basis;                                                                   ! Print basis information
+ Gprint,civector;                                                                ! Print CI vector in MCSCF
+ Gprint,orbital;                                                                 ! Print orbitals in SCF and MCSCF
+
+ SYMMETRY,X, Y, Z
+ basis=3-21G
+ geometry={
+ H,   0.000000000,   0.000000000,  -0.3704240463
+ H,   0.000000000,   0.000000000,   0.3704240463
+ }
+ {hf;
+ wf,nelec=2;
+ orbprint,1000;
+ }
+ put,molden,h2_test.molden;

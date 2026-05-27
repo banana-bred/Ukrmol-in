@@ -1,0 +1,11 @@
+name: gbtolib_env
+channels: [conda-forge]
+dependencies:
+  - compilers        # gcc/g++/gfortran
+  - cmake
+  - make
+  - openmpi          # mpicc, mpifort, mpirun
+  - libblas=*=*openblas        # meta, points BLAS to OpenBLAS
+  - liblapack                  # (optional; OpenBLAS already provides LAPACK symbols)
+  - libopenblas                # (runtime lib with the .so)
+  - coreutils        

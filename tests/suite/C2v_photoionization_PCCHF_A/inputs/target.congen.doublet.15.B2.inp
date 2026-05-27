@@ -1,0 +1,27 @@
+&state
+  sname = 'H2O+ - doublet B2',
+  megul = 7015, ! unit to which output is saved
+  iscat = 1,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 2,2,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 9, ! number of electrons
+  nob  = 83,53,55,34, ! total number of orbitals for each symmetry
+  nob0 = 4,1,3,0, ! number of target orbitals for each symmetry
+  nrefo = 2, ! Number of quintets in reforb
+  reforb = 0,1,8,0,0, 2,1,1,0,0, ! reference determinant
+  lndo = 10000000, ! memory control
+  gflag = 1, ! flag to group CSFs based on symmetry (1=on default)
+/
+&wfngrp
+  gname = 'SEP-like 15',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 9, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 2,1,1,0,0, ! movable electrons
+  ndprod = 5, ! number of sets of shells
+  nelecp = 4,2,2,0,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

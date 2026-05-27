@@ -1,0 +1,38 @@
+Program ORBITALS_TO_CUBE
+========================
+
+Write orbitals to Gaussian CUBE files.
+
+The program reads the input namelist &cube from the standard input. A typical one can look like this:
+
+  &cube
+    filename = 'dyson_orbitals.ukrmolp',  ! or 'moints'
+
+    orbitals = 1,10,                      ! range of orbitals (default: 1,1)
+    a = 15,                               ! inner region radius (default: 0)
+
+    nx = 201,  xmin = -10,  dx = 0.1,     ! x grid (default: 201, -10, 0.1)
+    ny = 201,  ymin = -10,  dy = 0.1,     ! y grid (default: 201, -10, 0.1)
+    nz = 201,  zmin = -10,  dz = 0.1,     ! z grid (default: 201, -10, 0.1)
+
+    verbosity = 2,                        ! verbosity level (default: 0)
+  /
+
+The entry "filename" is a path to a GBTOlib data file containing an orbital basis, produced, e.g., by scatci_integrals (molecular
+orbitals) or cdenprop (Dyson orbitals). The entry "orbitals" gives a range of orbitals to convert. These indices are global,
+that is, they refer to orbitals in the concatenated array from all irreducible representations. The evaluated orbitals will be
+written to files "orb_X.cube", where "X" is the orbital index. The remaining parameters define the Cartesian grid to use for
+the CUBE files.
+
+The format follows the overview given in https://gaussian.com/cubegen/ with no extra zero padding added. The CUBE files were
+successfully used in ParaView 6.0.0 and in Molden 7.3.
+
+When evaluating an orbital on grid, GBTOlib first evaluates all atomic orbitals on that grid (unless already done on the same
+grid). This is a lot of data. To avoid excessive memory consumption, the evaluation is performed in cycles and only subsets
+of the whole product grids are processed at one time.
+
+The molecular orbital expansion coefficients stored in the files are always given in terms of the Gaussians normalized to
+the inner region. However, Gaussian orbitals stored in the files are stored in their original form. That requires normalizing
+them prior to evaluation. For that, specification of the inner region radius is necessary. If this renormalization is not
+needed (e.g. when there are no long-range Gaussians leaking out of the inner region), the radius can be omitted.
+

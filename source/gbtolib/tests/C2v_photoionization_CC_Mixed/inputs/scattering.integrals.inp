@@ -1,0 +1,53 @@
+&target_data
+  a = 15, !radius of R-matrix sphere
+  no_sym_op = 2,
+  sym_op = 'X', 'Y',
+  molden_file = './ch4+.molden'
+  nob = 4,2,2,0,
+  select_orbitals_by = 1,
+/
+
+&continuum_data
+  run_free_scattering = .true., max_energy = 3.0, nE = 300,
+
+  del_thrs = 1.0D-07,1.0D-07,1.0D-07,1.0D-07, ! deletion threshold
+
+  min_l = 0, max_l = 4,
+  exponents(:,0) = 33.559323, 2.576968, 0.276187, 0.184632, 0.126330, 0.086941, 0.059603, 0.040429, 0.026977, 0.017594, 0.011082, 
+  exponents(:,1) = 1.546842, 0.367220, 0.254952, 0.182860, 0.133060, 0.097244, 0.070868, 0.051199, 0.036466, 0.025435, 0.017157, 
+  exponents(:,2) = 0.437039, 0.303223, 0.217211, 0.158560, 0.116878, 0.086332, 0.063474, 0.046155, 0.032943, 0.022774, 
+  exponents(:,3) = 0.409883, 0.291455, 0.213760, 0.159587, 0.120199, 0.090678, 0.068084, 0.050566, 0.036876, 0.026055, 
+  exponents(:,4) = 0.340244, 0.243185, 0.179271, 0.134479, 0.101646, 0.076790, 0.057555, 0.042443, 0.030365, 
+  exponents(:,5) = 0.225709, 0.167874, 0.128505, 0.099316, 0.076719, 0.058780, 0.044303, 0.032392, 
+  exponents(:,6) = 0.118188, 0.085985, 0.062824, 0.045463, 0.032349, 0.022480, 0.015073, 
+  exponents(:,7) = 0.202350, 0.124177, 0.079606, 0.050353, 0.030895, 0.018109, 
+
+  bspline_grid_start = 8.000,
+  bspline_order = 6,
+  no_bsplines = 7,
+
+  min_bspline_l = 0, max_bspline_l = 4,
+  bspline_indices(1,0) = 3,
+  bspline_indices(2,0) = 7,
+
+  bspline_indices(1,1) = 3,
+  bspline_indices(2,1) = 7,
+
+  bspline_indices(1,2) = 3,
+  bspline_indices(2,2) = 7,
+
+  bspline_indices(1,3) = 3,
+  bspline_indices(2,3) = 7,
+
+  bspline_indices(1,4) = 3,
+  bspline_indices(2,4) = 7
+/
+&process_control
+  max_ijrs_size = 5000
+  mixed_ints_method = 1      ! Applicable only when using B-spline continuum. Always use mixed_ints_method = 1
+  max_l_legendre_1el = 8   !Applicable only when using B-spline continuum. Maximum L to use in Legendre expansion for Nuclear attraction integrals.
+  max_l_legendre_2el = 8   !Applicable only when using B-spline continuum. Maximum L to use in Legendre expansion for 2-electron integrals.
+  calc_radial_densities = .false.
+  delta_r1 = 0.25
+  molecular_2el_algorithm = 0
+/

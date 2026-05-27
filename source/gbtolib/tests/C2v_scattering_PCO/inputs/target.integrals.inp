@@ -1,0 +1,39 @@
+&target_data
+  a = 15, !radius of R-matrix sphere
+  no_sym_op = 2,
+  sym_op = 'X', 'Y',
+  molden_file = './pyridine.molden'
+  nob = 11,2,7,1,
+  select_orbitals_by = 2,
+/
+&pco_data 
+  min_PCO_l = 0, max_PCO_l = 2,
+  PCO_alpha0(0:2) = 0.1,0.1,0.1,
+  PCO_beta(0:2) = 2,2,2,
+  PCO_gto_thrs(0:2) = -1,-1,-1,
+  num_PCOs(0:2) = 2,2,2,
+  PCO_del_thrs = 1.0D-04,1.0D-04,1.0D-04,1.0D-04,
+/
+&continuum_data
+  run_free_scattering = .true., max_energy = 3.0, nE = 300,
+
+  del_thrs = 1.0D-06,1.0D-06,1.0D-06,1.0D-06, ! deletion threshold
+
+  min_l = 0, max_l = 4,
+  exponents(:,0) = 0.314296, 0.225969, 0.166070, 0.123537, 0.092470, 0.069335, 0.051894, 0.038661, 0.028603, 0.020976, 0.015218, 0.010898, 0.007676, 0.005275, 
+  exponents(:,1) = 0.190738, 0.149110, 0.118747, 0.095378, 0.076887, 0.062008, 0.049908, 0.040005, 0.031873, 0.025189, 0.019696, 0.015179, 0.011430, 
+  exponents(:,2) = 0.109682, 0.089123, 0.073325, 0.060563, 0.050012, 0.041177, 0.033730, 0.027423, 0.022074, 0.017523, 0.013599, 
+  exponents(:,3) = 0.081557, 0.066702, 0.055196, 0.045797, 0.037933, 0.031264, 0.025557, 0.020630, 0.016297, 
+  exponents(:,4) = 0.059783, 0.048856, 0.040322, 0.033287, 0.027337, 0.022214, 0.017687, 
+
+  
+/
+&process_control
+  use_spherical_cgto_alg = .true.
+  max_ijrs_size = 5000
+  mixed_ints_method = 1      ! Applicable only when using B-spline continuum. Always use mixed_ints_method = 1
+  max_l_legendre_1el = 70   !Applicable only when using B-spline continuum. Maximum L to use in Legendre expansion for Nuclear attraction integrals.
+  max_l_legendre_2el = 55   !Applicable only when using B-spline continuum. Maximum L to use in Legendre expansion for 2-electron integrals.
+  calc_radial_densities = .false.
+  delta_r1 = 0.25
+/

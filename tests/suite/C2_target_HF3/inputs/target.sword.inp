@@ -1,0 +1,3 @@
+&inputo
+  ztail = .false., ! .false. for target, .true. for scattering
+/

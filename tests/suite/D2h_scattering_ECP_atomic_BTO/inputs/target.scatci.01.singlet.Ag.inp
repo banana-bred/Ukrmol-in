@@ -1,0 +1,10 @@
+&input
+  megul = 710, ! input from module CONGEN
+  nfte = 810, ! Hamiltonian scratch file
+/
+&cinorn
+  name = 'Ar - singlet Ag',
+  nstat = 1, ! number of CI eigenvalues
+  nftw = 26,
+  igh = 1,
+/

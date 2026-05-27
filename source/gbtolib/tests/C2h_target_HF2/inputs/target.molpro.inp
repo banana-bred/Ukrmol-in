@@ -1,0 +1,66 @@
+***,trans.diazene.molden with cc-pVDZ basis
+ Memory,12500000;
+ Gprint,basis;                                                                   ! Print basis information
+ Gprint,civector;                                                                ! Print CI vector in MCSCF
+ Gprint,orbital;                                                                 ! Print orbitals in SCF and MCSCF
+
+SYMMETRY,XZ, Y
+basis={
+! NITROGEN       (9s,4p,1d) -> [3s,2p,1d]
+! NITROGEN       (9s,4p,1d) -> [3s,2p,1d]
+s, N , 9046.0000000, 1357.0000000, 309.3000000, 87.7300000, 28.5600000, 10.2100000, 3.8380000, 0.7466000, 0.2248000
+c, 1.8, 0.0007000, 0.0053890, 0.0274060, 0.1032070, 0.2787230, 0.4485400, 0.2782380, 0.0154400
+c, 1.8, -0.0001530, -0.0012080, -0.0059920, -0.0245440, -0.0674590, -0.1580780, -0.1218310, 0.5490030
+c, 9.9, 1
+p, N , 13.5500000, 2.9170000, 0.7973000, 0.2185000
+c, 1.3, 0.0399190, 0.2171690, 0.5103190
+c, 4.4, 1
+d, N , 0.8170000
+c, 1.1, 1
+! HYDROGEN       (4s,1p) -> [2s,1p]
+! HYDROGEN       (4s,1p) -> [2s,1p]
+s, H , 13.0100000, 1.9620000, 0.4446000, 0.1220000
+c, 1.3, 0.0196850, 0.1379770, 0.4781480
+c, 4.4, 1
+p, H , 0.7270000
+c, 1.1, 1
+
+}
+bohr
+geometry={
+N,,   1.147819566,   0.000000000,   0.000000000
+H,,   1.722863184,   0.000000000,   1.840404140
+N,,  -1.147819566,   0.000000000,   0.000000000
+H,,  -1.722863184,   0.000000000,  -1.840404140
+
+}
+										! method = HF
+
+
+
+
+ {hf;
+ orbprint,200;}
+
+! {multi;
+! closed,							!closed,m_closed(1),m_closed(2),m_closed(3),m_closed(4);
+! occ,      							!occ,m_occ(1),m_occ(2),m_occ(3),m_occ(4);
+									!State-averaged orbitals
+! start,2100.2;
+! natorb,print=200;
+! dm;}									!save density matrices for the averaged states
+
+! {multi;
+! closed,							
+! occ,      							
+!>>>WF_NO_OPT<<<									!State-averaged, not optimized orbitals
+! dont,orbital;
+! natorb,print=200;
+! dm;}
+
+! {matrop; 
+! load,dm,den,2140.2;
+! write,dm;}								!save,dm,2140.2,DENSITY;} 
+
+put,molden,trans.diazene.molden;
+

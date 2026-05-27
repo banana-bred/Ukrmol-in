@@ -1,0 +1,28 @@
+&state
+  sname = 'benzene_plus - singlet B1g',
+  megul = 713, ! unit to which output is saved
+  iscat = 1,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 1,3,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 42, ! number of electrons
+  nob  = 24,24,9,9,18,18,6,6, ! total number of orbitals for each symmetry
+  nob0 = 24,24,9,9,18,18,6,6, ! number of target orbitals for each symmetry
+  nbmx = 40000000, !Number of Mwords memory allocated for CSF generation
+  nrefo = 7, ! Number of quintets in reforb
+  reforb = 0,1,14,0,0, 1,1,10,0,0, 2,1,4,0,0, 3,1,2,0,0, 4,1,8,0,0, 5,1,3,0,0, 6,1,1,1,0, ! reference determinant
+  lndo = 150000000, ! memory control
+  lcdo = 2000, ! memory control
+/
+&wfngrp
+  gname = 'benzene_plus - singlet B1g',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 42, ! number of electrons to distribute among configurations
+  nrefog = 7, ! number of reference determinants
+  reforg = 0,1,14,0,0, 1,1,10,0,0, 2,1,4,0,0, 3,1,2,0,0, 4,1,8,0,0, 5,1,3,0,0, 6,1,1,1,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 32,10, ! number of electrons in each set
+  nshlp  = 4,6,  ! number of shells (triplets) in each set
+  pqn  = 0,1,5, 0,1,5, 0,1,4, 0,1,2, 0,6,7, 0,1,2, 0,1,1, 0,3,3, 0,1,1, 0,1,1, ! orbitals in each shell
+  mshl =   0,     1,     4,     5,     0,     2,     3,     5,     6,     7, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

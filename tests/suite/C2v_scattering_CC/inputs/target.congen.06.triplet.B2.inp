@@ -1,0 +1,28 @@
+&state
+  sname = 'pyridine_plus_scattering - triplet B2',
+  megul = 732, ! unit to which output is saved
+  iscat = 1,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 3,2,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 42, ! number of electrons
+  nob  = 70,39,45,25, ! total number of orbitals for each symmetry
+  nob0 = 14,3,9,2, ! number of target orbitals for each symmetry
+  nbmx = 40000000, !Number of Mwords memory allocated for CSF generation
+  nrefo = 4, ! Number of quintets in reforb
+  reforb = 0,1,28,0,0, 1,1,5,0,0, 2,1,8,0,0, 3,1,1,0,0, ! reference determinant
+  lndo = 150000000, ! memory control
+  lcdo = 2000, ! memory control
+/
+&wfngrp
+  gname = 'pyridine_plus_scattering - triplet B2',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 42, ! number of electrons to distribute among configurations
+  nrefog = 4, ! number of reference determinants
+  reforg = 0,1,28,0,0, 1,1,5,0,0, 2,1,8,0,0, 3,1,1,0,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 38,4, ! number of electrons in each set
+  nshlp  = 3,4,  ! number of shells (triplets) in each set
+  pqn  = 0,1,11, 0,1,1, 0,1,7, 0,12,14, 0,2,3, 0,8,9, 0,1,2, ! orbitals in each shell
+  mshl =   0,     1,     2,     0,     1,     2,     3, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

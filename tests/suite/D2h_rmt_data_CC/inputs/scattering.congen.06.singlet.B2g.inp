@@ -1,0 +1,40 @@
+&state
+  sname = 'H2, singlet B2g',
+  megul = 75, ! unit to which output is saved
+  iscat = 2,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 1,5,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 2, ! number of electrons
+  nob  = 70,36,36,32,38,33,33,11,
+  nob0 =  3,1,1,0,3,1,1,0, ! number of target orbitals for each symmetry
+  nbmx = 40000000, !Number of Mwords memory allocated for CSF generation
+  nrefo = 2, ! Number of quintets in reforb
+  reforb = 0,1,1,1,0, 5,1,1,0,0, ! reference determinant
+  lndo = 150000000, ! memory control
+  lcdo = 2000, ! memory control
+/
+&wfngrp
+  gname = 'H2, singlet B2g, singly ionized',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 2, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,1,1,0, 5,1,1,0,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 1,1, ! number of electrons in each set
+  nshlp  = 1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,1, 0,2,3, ! orbitals in each shell
+  mshl =   0,     5,   ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'H2, singlet B2g, singly excited',
+  nelecg = 2, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,1,1,0, 5,1,1,0,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 1,1, ! number of electrons in each set
+  nshlp  = 1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,1, 0,1,1, ! orbitals in each shell
+  mshl =   0,     5,   ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

@@ -1,0 +1,21 @@
+# Enforce the use of spherical GTO basis:
+# the molden file generated in the cartesian (default) GTO basis
+# cannot be used in GBTOlib due to a yet unknown normalization
+# convention for the cartesian GTOs in PSI4.
+set puream true
+
+molecule {
+    0  1
+    symmetry d2h
+    units ang
+ H    0.000000000    0.000000000   -0.3704240463
+ H    0.000000000    0.000000000    0.3704240463
+}
+
+# HF
+set basis 3-21G
+set maxiter 100
+
+[E, wfn] = energy('scf', return_wfn=True)
+
+molden(wfn, 'h2_test.molden')

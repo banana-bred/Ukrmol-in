@@ -1,0 +1,12 @@
+&input
+  name = 'uracil_plus - Transition Moments',
+  ipol = 1, ! controls calculation of dipole polarizabilities, 0 = no calculation
+  ntgt = 4, ! number of CSF expansions used, this is the number of different output files to be read
+  nftg = 26, ! target eigenstates
+  nftint = 16, ! molecular integrals
+  nftsor = 710,730,711,731, ! unit numbers with output from CONGEN
+  ntgtf = 1,2,3,4, ! defines the set number, on unit NFTG where the CI vectors for this symmetry are to be found.
+  ntgtl = 3,2,2,2, ! defines the sequence number, within the set specified by NTGTF, of the last CI vector to be used
+  npflg(9) = 1, ! prints computed moments
+  zlast = .true., ! when set to .true. identifies that this card deck is the last in the stack of &INPUT decks.
+/

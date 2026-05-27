@@ -1,0 +1,62 @@
+&swintfin                 ! used by SW_INTERF (see docs/swinterf)
+  name = 'e + H2O_final - doublet A1',
+  mgvn = 0,               ! symmetry, 0 = A1, as in CONGEN
+  stot = 2,               ! spin multiplicity 2*S+1
+  ntarg = 20,              ! number of target states
+  idtarg = 3,5,11,17,4,10,18,2,9,20,1,8,16,19,7,14,15,6,12,13              ! mapping of target states from order by target congen inputs to energy order as in unit LUTARG = 24 (output of denprop)
+  rmatr = 15,           ! R-matrix radius
+  ismax = 2,              ! maximum multipole to be retained in expansion of long range potentials
+  last_coeff_saved = 0,      ! subset of coefficients stored in fort.25 (often restricted to continuum ones)
+  ukrmolp_ints = .true., ! commented out if you do not run UKRmol+ suite
+/
+&rslvin                   ! used by R_SOLVE (see docs/rsolve)
+  name = 'e + H2O_final - doublet A1 - K-matrices',
+  mgvn = 0,               ! symmetry
+  stot = 2,               ! spin multiplicity 2*S+1
+  newbut = 0,             ! Buttle correction - 0 in polyatomic codes
+  nerang = 1,          ! number of energy subranges
+  nescat = 350,          ! number of input scattering energies in each subrange
+  einc = 0.01, 0.02,     ! scattering energies - initial energy, energy increment, there can be more subranges
+  ieunit = 2,             ! energy unit - 1 = Ryd, 2 = eV
+  ikform = 'F',           ! formatted/unformatted switch for unit LUKMT = 19 (K-matrix)
+/
+&bprop                    ! read by subroutine ASYM1 called from R_SOLVE (see docs/rprop-cfasym) 
+  raf = 100,             ! radius at which continued fraction method can be used
+/
+&phasin                   ! used by EIGEN_P (see docs/eigenp) 
+  name = 'e + H2O_final - doublet A1', 
+  ieunit = 2,             ! energy unit - 1 = Ryd, 2 = eV
+  icon = 1,               ! eigenphase smoothing switch - 1 = add multiples of pi
+  luphso = 110,           ! formatted eigenphases
+  ikform = 'F',           ! formatted/unformatted switch for unit LUKMT = 19 (K-matrix)
+/
+&tmatin                   ! used by T_MATRX (see docs/tmatrx) 
+  name = 'e + H2O_final - doublet A1', 
+  maxi = 5,               ! the highest initial state for which cross sections are required      
+  maxf = 0,               ! the highest final state for which cross sections are required      
+  ikform = 'F',           ! formatted/unformatted switch for unit LUKMT = 19 (K-matrix)
+  itform = 'F',		  ! formatted/unformatted switch for unit LUTMT = 12 (T-matrix)
+/
+&xsecin                   ! used by I_XSECS (see docs/ixsecs)
+  name = 'e + H2O_final - doublet A1', 
+  ieunit = 2,             ! energy unit - 1 = Ryd, 2 = eV 
+  ixsn = 2,               ! cross-section unit - 1 = bohr**2, 2 = angstrom**2, 3 = pi*bohr**2
+  maxi = 5,               ! the highest initial state for which cross sections are required      
+  maxf = 0,               ! the highest final state for which cross sections are required
+  itform = 'F',		  ! formatted/unformatted switch for unit LUTMT = 12 (T-matrix)
+  luxsn = 111,            ! formatted cross sections (note: 100 here would collide with Cray's stdin)
+/
+&res                      ! used by RESON_F (see docs/reson)
+  name = 'e + H2O_final - doublet A1 - Resonance fits'
+  lukmt = 19,             ! file with K-matrix
+  lures = 27,             ! unit for K-matrix data for resonance fits
+  mgvn = 0,               ! symmetry
+  stot = 2,               ! spin multiplicity 2*S+1
+  nst = 1,                ! label of scattering state symmetry ???
+  ikform = 'F',           ! formatted/unformatted switch for unit LUKMT = 19 (K-matrix)
+  geteta = .false.        ! fit only using the supplied energy points, i.e. don't call RSOLVE from RESON.
+/
+&bprop                    ! read by subroutine ASYM1 called from RESON (see docs/rprop-cfasym) 
+  raf = 100,             ! radius at which continued fraction method can be used
+/
+

@@ -1,0 +1,12 @@
+&input
+  name = 'H2 - Transition Moments',
+  ipol = 2, ! controls calculation of dipole polarizabilities, 0 = no calculation
+  ntgt = 7, ! number of CSF expansions used, this is the number of different output files to be read
+  nftsor = 710,711,712,713,714,715,716, ! unit numbers with output from CONGEN
+  ntgtf = 1,2,3,4,5,6,7, ! defines the set number, on unit NFTG where the CI vectors for this symmetry are to be found.
+  ntgtl = 6,2,2,1,2,1,1, ! defines the sequence number, within the set specified by NTGTF, of the last CI vector to be used
+  nftint = 16, ! molecular integrals
+  npflg(9) = 1, ! prints computed moments
+  zlast = .true., ! when set to .true. identifies that this card deck is the last in the stack of &INPUT decks.
+  ukrmolp_ints = .true., ! commented out if you do not run UKRmol+ suite
+/

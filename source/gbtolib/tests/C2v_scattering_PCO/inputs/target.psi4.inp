@@ -1,0 +1,36 @@
+molecule {
+    0  1
+    symmetry C2v
+    units au
+    N   0.000000000   0.000000000   2.602654195
+    C   0.000000000   2.136717711   1.306677361
+    C   0.000000000  -2.136717711   1.306677361
+    C   0.000000000   2.251613295  -1.313244311
+    C   0.000000000  -2.251613295  -1.313244311
+    C   0.000000000   0.000000000  -2.651173151
+    H   0.000000000   3.861096336   2.410846600
+    H   0.000000000  -3.861096336   2.410846600
+    H   0.000000000   4.058006202  -2.267368988
+    H   0.000000000  -4.058006202  -2.267368988
+    H   0.000000000   0.000000000  -4.696616903
+
+}
+
+# HF
+set basis cc-pVDZ
+set reference rhf
+set maxiter 100
+
+# CASSCF
+set restricted_docc [ 0,0,0,0 ]
+set active [ 0,0,0,0 ]
+set mcscf_maxiter 1000
+
+# state-averaging
+set num_roots 1
+set avg_states [ 0 ]
+set avg_weights [ 1 ]
+
+[E, wfn] = energy('scf', return_wfn=True)
+
+molden(wfn, 'pyridine.molden')

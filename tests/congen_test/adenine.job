@@ -1,0 +1,113 @@
+#!/bin/bash
+# CONGEN TEST THAT GENERATES A VERY LARGE NUMBER OF CONFIGURATIONS.
+
+# PROVIDE THE PATH FOR THE INNER REGION EXECUTABLES
+export bininner="/scratch/jdgorfinkiel/BINTEMP/LATEST/UKRmol-in/bin/"
+
+# PROVIDE THE NAME OF THE OUTPUT FILE
+file=inner_diag_adp
+
+#Model: Close-coupling calc with 16 lowest target states + L2 functions
+
+###################################################################
+#===============================================
+cat > congen.inp << eof
+&STATE
+  sname= 'A^-: 2Adp'
+  iscat=2,symtyp=2,
+  qntot=2,1,0,
+  nelect=71,
+  nob=142,86,
+  nob0=30,10,
+  nrefo=4,
+  reforb=0,1,20,0,0, 0,11,38,0,0, 1,1,12,0,0, 1,7,1,0,0,
+  confpf=0
+  npflg=0,0,0,0,0,
+  cdimx=2000000,ndimx=2000000,nodimx=20000000,
+  nbmx=60000000,
+/
+  &wfngrp
+   gname='adenine: 1Ap + continuum',
+   qntar= 1,0,0,
+   nelecg=51, nrefog=3,
+   reforg=0,11,38,0,0, 1,1,12,0,0, 1,7,1,0,0,
+   ndprod=3, nelecp=36,14,1,
+   nshlp=1,2,1,
+   pqn= 0,11,28, 0,29,30, 0,1,10, 0,11,12,
+   mshl=   0,       0,      1,       1,
+   npcupf=1,
+/
+  &wfngrp
+   gname='adenine: 3Ap + continuum',
+   qntar= 3,0,0,
+   nelecg=51, nrefog=3,
+   reforg=0,11,38,0,0, 1,1,12,0,0, 1,7,1,0,0,
+   ndprod=3, nelecp=36,14,1,
+   nshlp=1,2,1,
+   pqn= 0,11,28, 0,29,30, 0,1,10, 0,11,12,
+   mshl=   0,       0,      1,       1,
+   npcupf=1,
+/
+  &wfngrp
+   gname='adenine: 3Adp + continuum',
+   qntar= 3,1,0,
+   nelecg=51, nrefog=3,
+   reforg=0,11,38,0,0, 1,1,12,0,0, 1,7,1,0,0,
+   ndprod=3, nelecp=36,14,1,
+   nshlp=1,2,1,
+   pqn= 0,11,28, 0,29,30, 0,1,10, 0,31,32,
+   mshl=   0,       0,      1,       0,
+   npcupf=1,
+/
+  &wfngrp
+   gname='adenine: 1Adp + continuum',
+   qntar= 1,1,0,
+   nelecg=51, nrefog=3,
+   reforg=0,11,38,0,0, 1,1,12,0,0, 1,7,1,0,0,
+   ndprod=3, nelecp=36,14,1,
+   nshlp=1,2,1,
+   pqn= 0,11,28, 0,29,30, 0,1,10, 0,31,32,
+   mshl=   0,       0,      1,       0,
+   npcupf=1,
+/
+  &wfngrp
+   gname='adenine: L2 functions',
+   nelecg=51, nrefog=3,
+   reforg=0,11,38,0,0, 1,1,12,0,0, 1,7,1,0,0,
+   ndprod=2, nelecp=36,15,
+   nshlp=1,2,
+   pqn= 0,11,28, 0,29,30, 0,1,10,
+   mshl=   0,       0,      1,
+   npcupf=1,
+/
+eof
+#
+#echo "Module:CONGEN--Configuration generation"
+#(echo;echo;echo "Start of Module: CONGEN for A^- 2Adp") > $file.out
+$bininner/congen < congen.inp > $file.out
+#(echo;echo;echo "End of Module: CONGEN for A^- 2Adp") >> $file.out
+#======================
+#cat > ci.inp << EOF
+# &input 
+# iexpc=1, icitg=1, idiag=2, nftg=0,
+# ntgsym=4, mcont=1,1,0,0,
+# notgt=76,76,112,112, numtgt=4,4,4,4,
+# &end
+# &cinorn
+#  name='A^-: 2Adp',
+#  !nstat=full,
+# &end
+#EOF
+#
+#echo "Module: SCATCI--Configuration interaction calculation"
+#(echo;echo;echo "Start of Module: SCATCI for A^-2Adp") >> $file.out
+#time $bininner/scatci < ci.inp >> $file.out
+#(echo;echo;echo "End of Module: SCATCI for A^-2Adp") >> $file.out
+#mv fort.25 civecto_2Adp
+#=========================================
+################################################################
+########################################################################
+
+rm -f *.inp
+
+exit

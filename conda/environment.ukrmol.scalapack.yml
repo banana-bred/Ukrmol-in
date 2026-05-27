@@ -1,0 +1,21 @@
+name: ukrmol-scalapack-env
+channels: [conda-forge]
+dependencies:
+  - cmake
+  - make
+  - openmpi
+  - c-compiler
+  - cxx-compiler
+  - fortran-compiler
+  - pkg-config
+  - autoconf
+  - automake
+  - libtool
+  - m4
+  - curl
+  - wget
+  - libblas=*=*mkl
+  - liblapack=*=*mkl
+  - python=3.11
+  - psi4
+

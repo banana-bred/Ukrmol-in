@@ -1,0 +1,31 @@
+&input
+  iposit = -1,
+  megul = 70,  ! input from module CONGEN
+  nfte = 29, ! Hamiltonian scratch file
+  icidg = 1,   ! 0 - do not diagonalize for parallel, 1 - do diagonalise Hamiltonian matrix for serial
+  iexpc = 1,   ! prototype CI expansion flag - 1 for scattering calculation
+  icitg = 1,   ! CI target flag - 1 = perform CI target contraction
+  idiag = 2,   ! matrix element evaluation flag - 2 = do not evaluate pure target integrals
+  nftg =  0,   !266,    ! CI target vectors switch - 0 = use scattering wavefunctions to generated (phase corrected) target wavefunctions
+  ntgsym = 6,  ! number of target state symmetries (>1 in CAS calculations)
+  mcont = 0,1,2,4,5,6,   ! lambda value ('symmetry') of the continuum orbitals associated with each target state
+  notgt = 34,18,18,18,16,16,  ! number of continuum orbitals associated with each target symmetry
+  numtgt = 6,1,1,4,1,1,  ! number of target states for each symmetries
+  ntgtf = 1,1,1,1,1,1,2,3,4,4,4,4,5,6,  ! set number, on unit NFTG, which contains the required target state
+  ntgts = 1,2,3,4,5,6,1,1,1,2,3,4,1,1,  ! sequence number of the state within the set specified by NTGTF to be used as the target state
+  ukrmolp_ints = .true., ! commented out if you do not run UKRmol+ suite
+  nfti  = 16,  ! molecular integrals
+! enh_factor_type=1     ! 1 - provide value below, 2 - Compute using MP2, 3- compute with MP2 and multiply
+                        ! by value below.  Default =0
+! enh_factor = 1.001, ! positron enhancement factor. Default= 1_wp (i.e. no enhancement)
+
+/
+&cinorn
+  nftw = 250,   ! output file with eigenpairs
+  name = 'H2 CI calculation - doublet Ag',
+ !igh = 1,
+ !memp = 2.5,
+  NPFLG(1) = 0, ! no Hamiltonian matrix elements printed
+  NPFLG(2) = 0, ! print lowest 20 eigenvalues only
+  nciset = 1,
+/

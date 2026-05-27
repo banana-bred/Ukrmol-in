@@ -1,0 +1,13 @@
+&input
+  megul = 7006, ! input from module CONGEN
+  nfte = 29, ! Hamiltonian scratch file
+  ukrmolp_ints = .true., ! commented out if you do not run UKRmol+ suite
+/
+&cinorn
+  name = 'H2O CI calculation - singlet B2',
+  nstat = 1, ! number of CI eigenvalues
+  nciset = 6, ! index of calculated CI vectors within output file (0 = automatic indexing, but first must be 1)
+  nftw = 26, ! output file with eigenpairs
+ !igh = 1,
+ !memp = 2.5,
+/

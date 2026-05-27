@@ -1,0 +1,27 @@
+molecule {
+    0  1
+    symmetry D2h
+    units au
+    H   0.000000000   0.000000000  -0.700000000
+    H   0.000000000   0.000000000   0.700000000
+
+}
+
+# HF
+set basis 6-31Gss
+set reference rhf
+set maxiter 100
+
+# CASSCF
+set restricted_docc [ 0,0,0,0,0,0,0,0 ]
+set active [ 0,0,0,0,0,0,0,0 ]
+set mcscf_maxiter 1000
+
+# state-averaging
+set num_roots 1
+set avg_states [ 0 ]
+set avg_weights [ 1 ]
+
+[E, wfn] = energy('scf', return_wfn=True)
+
+molden(wfn, 'h2.molden')

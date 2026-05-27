@@ -1,0 +1,20 @@
+# H2+ with a stock VDZ basis
+
+molecule h2 {
+
+    symmetry D2h            # molecular point group
+    units    au             # length unit for the geometry specification below
+
+    1     2                 # net charge, spin multiplicity
+
+    H   0.0   0.0  -0.7
+    H   0.0   0.0   0.7
+
+}
+
+set reference rohf          # either "uhf" or "rohf" needed for open-shell systems
+set basis     cc-pVDZ       # use stock basis from Psi4 database
+
+[E, wfn] = energy('scf', return_wfn=True)
+
+molden(wfn, 'h2+.molden')

@@ -1,0 +1,16 @@
+This documentation was created using:
+Doxygen v1.8.13
+dot - graphviz version 2.40.1 (20161225.0304)
+
+The path to 'dot' must be included in the environment variable PATH.
+
+In order to generate the documentation simply run the following command:
+doxygen Doxyfile
+
+The documentation includes the README file and documentation for the program
+SCATCI_INTEGRALS.
+
+Unfortunately, Doxygen struggles terribly with the object-oriented features
+of Fortran 2003+ so the documentation for the main objects remains mangled.
+
+Zdenek Masin, Nov 2018

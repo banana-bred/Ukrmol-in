@@ -1,0 +1,326 @@
+&state
+  sname = 'e + H2O+ - singlet A1',
+  megul = 70, ! unit to which output is saved
+  iscat = 2,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 1,0,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 10, ! number of electrons
+  nob  = 83,53,55,34, ! total number of orbitals for each symmetry
+  nob0 = 4,1,3,0, ! number of target orbitals for each symmetry
+  nrefo = 2, ! Number of quintets in reforb
+  reforb = 0,1,8,0,0, 1,1,2,0,0, ! reference determinant
+  lndo = 10000000, ! memory control
+  gflag = 1, ! flag to group CSFs based on symmetry (1=on default)
+/
+&wfngrp
+  gname = 'SE-like 1 x cont^1',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 5, ! number of sets of shells
+  nelecp = 4,1,2,2,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,5,6, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 2 x cont^1',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,0,2,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,5,6, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 3 x cont^1',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,0,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,5,6, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 4 x cont^1',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,2,0,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,5,6, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 5 x cont^1',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,1,2,1,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, 0,5,6, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 6 x cont^1',
+  qntar = 2,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,1,2,1,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,3,3, 0,5,6, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SE-like 7 x cont^1',
+  qntar = 2,1,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 5, ! number of sets of shells
+  nelecp = 4,2,1,2,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,3, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     1, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 8 x cont^1',
+  qntar = 2,1,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,1,1,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,2,3, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     1, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 9 x cont^1',
+  qntar = 2,1,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,1,1,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, 0,2,3, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     1, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 10 x cont^1',
+  qntar = 2,1,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,1,1,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,3,3, 0,2,3, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     1, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SE-like 11 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 5, ! number of sets of shells
+  nelecp = 4,2,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 12 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,1,2,1,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 13 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,0,2,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 14 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,0,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 15 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,2,0,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 16 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,0,2,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,3,3, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 17 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,0,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,3,3, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 18 x cont^1',
+  qntar = 2,2,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,2,0,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,3,3, 0,4,5, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 19 x cont^1',
+  qntar = 2,3,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,2,1,1,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,1,2, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     3, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 20 x cont^1',
+  qntar = 2,3,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,1,1,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,2,2, 0,1,2, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     3, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'SEP-like 21 x cont^1',
+  qntar = 2,3,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 6, ! number of sets of shells
+  nelecp = 4,1,1,2,1,1, ! number of electrons in each set
+  nshlp  = 1,1,1,1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,3,3, 0,1,2, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     2,     3, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'Ground state x virtual^1',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 3, ! number of sets of shells
+  nelecp = 4,5,1, ! number of electrons in each set
+  nshlp  = 1,3,2,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,2,3, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'Core valence^-1 x virtual^2',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 3, ! number of sets of shells
+  nelecp = 4,4,2, ! number of electrons in each set
+  nshlp  = 1,3,2,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, 0,4,4, 0,2,3, ! orbitals in each shell
+  mshl =   0,     0,     1,     2,     0,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'Ground state',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 10, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,8,0,0, 1,1,2,0,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 4,6, ! number of electrons in each set
+  nshlp  = 1,3,  ! number of shells (triplets) in each set
+  pqn  = 0,1,2, 0,3,3, 0,1,1, 0,1,1, ! orbitals in each shell
+  mshl =   0,     0,     1,     2, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

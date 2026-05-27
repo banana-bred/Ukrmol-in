@@ -1,0 +1,4 @@
+&inputmo
+  title = 'hydrogen.peroxide_plus - Four Index Transformed Integrals',
+  iget = 1,1,1,19, 1,2,1,19, ! quartets giving all orbitals after othogonalization by swedmos
+/

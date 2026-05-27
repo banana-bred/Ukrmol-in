@@ -1,0 +1,28 @@
+&state
+  sname = 'butane_plus_scattering - triplet Au',
+  megul = 731, ! unit to which output is saved
+  iscat = 1,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 3,1,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 46, ! number of electrons
+  nob  = 103,74, ! total number of orbitals for each symmetry
+  nob0 = 15,11, ! number of target orbitals for each symmetry
+  nbmx = 40000000, !Number of Mwords memory allocated for CSF generation
+  nrefo = 2, ! Number of quintets in reforb
+  reforb = 0,1,29,0,0, 1,1,17,0,0, ! reference determinant
+  lndo = 150000000, ! memory control
+  lcdo = 2000, ! memory control
+/
+&wfngrp
+  gname = 'butane_plus_scattering - triplet Au',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 46, ! number of electrons to distribute among configurations
+  nrefog = 2, ! number of reference determinants
+  reforg = 0,1,29,0,0, 1,1,17,0,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 36,10, ! number of electrons in each set
+  nshlp  = 2,2,  ! number of shells (triplets) in each set
+  pqn  = 0,1,10, 0,1,8, 0,11,15, 0,9,11, ! orbitals in each shell
+  mshl =   0,     1,     0,     1, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

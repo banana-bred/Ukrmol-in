@@ -1,0 +1,23 @@
+&input
+  megul = 71,  ! input from module CONGEN
+  nfte  = 81,  ! Hamiltonian scratch file
+  nfti  = 16,  ! molecular input file
+  icidg = 1,   !0 - do not diagonalize for parallel, 1 - do diagonalise Hamiltonian matrix for serial
+  iexpc = 1,   ! prototype CI expansion flag - 1 for scattering calculation
+  icitg = 1,   ! CI target flag - 1 = perform CI target contraction
+  idiag = 2,   ! matrix element evaluation flag - 2 = do not evaluate pure target integrals
+  nftg = 26,   ! CI target vectors switch - 0 = use scattering wavefunctions to generated (phase corrected) target wavefunctions
+  ntgsym = 4,  ! number of target state symmetries (>1 in CAS calculations)
+  mcont = 1,1,0,0,   ! lambda value ('symmetry') of the continuum orbitals associated with each target state
+  notgt = 72,72,79,79,  ! number of continuum orbitals associated with each target symmetry
+  numtgt = 2,1,1,1,  ! number of target states for each symmetries
+  ntgtf = 1,1,2,3,4,  ! target state set
+  ntgts = 1,2,1,1,1,  ! target state index in set
+/
+&cinorn
+  name = 'hydrogen.peroxide_plus_scattering CI calculation - doublet B',
+  igh = 1,      ! force dense diagonalization
+  nftw = 251,   ! output file with eigenpairs
+  NPFLG(1) = 0,
+  NPFLG(2) = 0,
+/

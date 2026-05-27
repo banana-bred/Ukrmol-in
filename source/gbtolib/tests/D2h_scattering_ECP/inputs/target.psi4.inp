@@ -1,0 +1,69 @@
+set puream true
+
+basis {
+
+assign StuttgartRLC
+
+[ StuttgartRLC ]
+spherical
+****
+Cl     0
+S    3   1.00
+     14.0730760              0.0203450
+      2.3315650             -0.2892230
+      0.5071000              0.6303670
+S    1   1.00
+      0.1824330              1.0000000
+P    3   1.00
+      3.3531290             -0.0415520
+      0.7856860              0.3997480
+      0.2674540              0.5918290
+P    1   1.00
+      0.0782750              1.0000000
+P    1   1.00
+      0.0154770              1.0000000
+****
+CL     0
+CL-ECP     3     10
+f potential
+  1
+2      1.000000000            0.000000000
+s-f potential
+  2
+2      6.394300000           33.136632000
+2      3.197100000           16.270728000
+p-f potential
+  2
+2      5.620700000           24.416993000
+2      2.810300000            7.683050000
+d-f potential
+  1
+2      5.338100000           -8.587649000
+
+}
+
+molecule chlorine {
+
+    units angstrom
+
+    Cl1    0.0000    0.0000    0.0000
+    Cl2    0.0000    0.0000    1.9879
+
+}
+
+E, wfn = properties('scf', properties=['dipole', 'quadrupole'], return_wfn=True)
+
+wfn.write_molden('chlorine.molden')
+
+# Post-process the Molden file so that it stores the atomic number rather than the screened nuclear charge.
+# This is needed for consistency with Molpro and with the expectations of GBTOlib, and maybe even with the
+# Molden file format specification itself. The formatting is taken from "psi4/driver/p4util/writer.py" from
+# version 1.10 of Psi4.
+with open('chlorine.molden', 'r+') as f:
+    text = f.read()
+    mol = wfn.molecule()
+    for atom in range(0, mol.natom()):
+        text = text.replace(f'{mol.symbol(atom):2s}  {atom+1:2d}  {int(mol.Z(atom)):3d}',
+                            f'{mol.symbol(atom):2s}  {atom+1:2d}  {int(mol.true_atomic_number(atom)):3d}')
+    f.seek(0)
+    f.write(text)

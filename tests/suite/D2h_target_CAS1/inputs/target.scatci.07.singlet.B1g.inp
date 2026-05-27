@@ -1,0 +1,12 @@
+&input
+  megul = 713, ! input from module CONGEN
+  nfte  = 813, ! Hamiltonian scratch file
+  nfti  = 16,  ! molecular integrals
+/
+&cinorn
+  name = 'benzene_plus CI calculation - singlet B1g',
+  nstat = 2,  ! number of CI eigenvalues
+  nftw = 26,  ! output file with eigenpairs
+  nciset = 7, ! index of calculated CI vectors within output file (0 = automatic indexing, but first must be 1)
+  igh = 1,    ! force dense diagonalization
+/

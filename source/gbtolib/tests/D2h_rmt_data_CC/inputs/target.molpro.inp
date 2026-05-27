@@ -1,0 +1,20 @@
+***,H2+ with VDZ basis
+Gprint,basis;                                 ! Print basis information
+Gprint,civector;                              ! Print CI vector in MCSCF
+Gprint,orbital;                               ! Print orbitals in SCF and MCSCF
+BOHR
+SYMMETRY,X, Y, Z
+basis=vdz
+bohr
+geometry={
+H,,   0.000000000,   0.000000000,  -0.700000000
+H,,   0.000000000,   0.000000000,   0.700000000
+
+}
+
+{hf;
+wf,nelec=1;
+orbprint,1000;
+}
+
+put,molden,H2+.molden;

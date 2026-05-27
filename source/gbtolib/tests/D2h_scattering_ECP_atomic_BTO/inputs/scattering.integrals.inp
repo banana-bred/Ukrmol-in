@@ -1,0 +1,54 @@
+&target_data
+  a = 10,
+  no_sym_op = 3,
+  sym_op = 'X','Y','Z',
+  molden_file = 'ar.molden',
+  nob = 1,1,1,0,1,0,0,0,
+  select_orbitals_by = 1,
+/
+
+&continuum_data
+  run_free_scattering = .true.,
+  max_energy = 3.0,
+  nE = 300,
+
+  del_thrs = 1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,
+
+  bspline_grid_start = 0.0,
+  bspline_order = 9,
+  no_bsplines = 15,
+
+  min_bspline_l = 0,
+  max_bspline_l = 4,
+
+  bspline_indices(:,0) = 2,15,
+  bspline_indices(:,1) = 2,15,
+  bspline_indices(:,2) = 2,15,
+  bspline_indices(:,3) = 2,15,
+  bspline_indices(:,4) = 2,15,
+/
+
+&process_control
+  mixed_ints_method = 1,
+  max_l_legendre_1el = 8,
+  max_l_legendre_2el = 8,
+  delta_r1 = 0.1,
+  molecular_2el_algorithm = 1,
+/
+
+&ecp
+  have_ecp = .true.,
+
+  nuc = 1,
+  n_core = 10,
+
+  nlmax = 1,
+  local_term = 2,1.,0.,
+
+  lmax = 4,
+  nl = 2,2,2,1,
+  semilocal_term(:,0) = 2,10.261721000,68.667788010, 2,3.952725000,24.042766290,
+  semilocal_term(:,1) = 2,5.392714000,27.730763310,2,2.699967000,4.045459040,
+  semilocal_term(:,2) = 2,8.086235000,-8.137476960,2,4.016632000,-1.664528080,
+  semilocal_term(:,3) = 2,5.208459000,-3.400098450,
+/

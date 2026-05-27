@@ -1,0 +1,66 @@
+***,He with cc-pVTZ basis
+Gprint,basis;                                 ! Print basis information
+Gprint,civector;                              ! Print CI vector in MCSCF
+Gprint,orbital;                               ! Print orbitals in SCF and MCSCF
+
+SYMMETRY,X, Y, Z
+basis={
+! HELIUM       (6s,2p,1d) -> [3s,2p,1d]
+! HELIUM       (6s,2p,1d) -> [3s,2p,1d]
+s, He, 234.0000000, 35.1600000, 7.9890000, 2.2120000, 0.6669000, 0.2089000
+c, 1.4, 0.0025870, 0.0195330, 0.0909980, 0.2720500
+c, 5.5, 1
+c, 6.6, 1
+p, He, 3.0440000, 0.7580000
+c, 1.1, 1
+c, 2.2, 1
+d, He, 1.9650000
+c, 1.1, 1
+
+}
+geometry={
+He,,   0.000000000,   0.000000000,   0.000000000
+
+}
+
+method = 'HF'  ! set to HF or CASSCF in scripts
+
+IF (method.eq.'HF') THEN
+
+{hf;
+wf,nelec=1;
+orbprint,1000;
+}
+
+ELSE
+
+{hf;
+wf,nelec=1;
+orbprint,-1;
+}
+
+! First CASSCF run only for target states for which orbitals should be optimised
+{multi;
+closed,0,0,0,0,0,0,0,0;
+occ,0,0,0,0,0,0,0,0;
+
+natorb,print=1000;
+}
+
+! Second CASSCF run for all target states without orbital optimalisation
+!{multi;
+!closed,0,0,0,0,0,0,0,0;
+!occ,0,0,0,0,0,0,0,0;
+!
+!dont,orbital;
+!dm;
+!}
+
+! Saving density matrix for radden
+!{matrop; 
+!load,dm,den,2140.2;
+!write,dm;}								!save,dm,2140.2,DENSITY;} 
+
+ENDIF
+
+put,molden,He.molden;

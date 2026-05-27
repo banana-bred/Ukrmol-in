@@ -1,0 +1,16 @@
+&target_data
+  a = -1, !radius of R-matrix sphere
+  no_sym_op = 3,
+  sym_op = 'X', 'Y', 'Z',
+  molden_file = './benzene.molden'
+  nob = 24,24,18,18,9,9,6,6,
+/
+&continuum_data
+/
+&process_control
+ do_two_particle_integrals = .true.  !Calculate 2-electron integrals or not
+ max_ijrs_size = 15000.0             !Memory (in MiB) to use per MPI task in the integral transformation step
+ print_1el_ints = .false.            !Output 1-electron integrals into the log_file or not
+ print_2el_ints = .false.            !Output 2-electron integrals into the log_file or not
+/
+

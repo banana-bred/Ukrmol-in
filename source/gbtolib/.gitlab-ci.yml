@@ -1,0 +1,66 @@
+image: debian:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - build
+  - deploy
+
+# ============================================================================ #
+# Build Templates & Jobs (From Master)
+# ============================================================================ #
+.build_template:
+  stage: build
+  before_script:
+    - apt update && apt -y install git g++ cmake make libblas-dev liblapack-dev libopenmpi-dev
+  script:
+    - cat /etc/os-release
+    - export CC=$(which mpicc)
+    - export CXX=$(which mpicxx)
+    - export FC=$(which mpifort)
+    - export FFLAGS="-fdefault-integer-8 -std=f2008 -pedantic-errors"
+    # Note: The automatic MPI test fails because we need to supply
+    #               -D MPIEXEC_PREFLAGS="--allow-run-as-root --oversubscribe"
+    #       but for now we just put in the MPI-related flags manually.
+    - cmake -D GBTOlib_Fortran_FLAGS="$GBTOlib_Fortran_FLAGS" .
+    - make
+
+build_double:
+  extends: .build_template
+  variables:
+    GBTOlib_Fortran_FLAGS: "-Dusempi;-Dsplitreduce;-Dmpithree"
+
+build_quad:
+  extends: .build_template
+  variables:
+    GBTOlib_Fortran_FLAGS: "-Dusempi;-Dsplitreduce;-Dmpithree;-Dusequadprec"
+  needs:
+    # Do not attempt to run the fp128 compilation until the fp64 one works.
+    - job: build_double
+
+# ============================================================================ #
+# Deploy Job 
+# ============================================================================ #
+# This only runs if the commit message contains "DEPLOY".
+docker_deploy:
+  stage: deploy
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:latest
+  before_script:
+    # Log into the GitLab Container Registry
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - echo "Building Docker image..."
+    # Build using out specific Dockerfile path
+    - docker build -t $IMAGE_TAG -f conda/Dockerfile .
+    - echo "Pushing Docker image..."
+    - docker push $IMAGE_TAG
+  rules:
+    # Only run this job if "DEPLOY" is found in the commit message
+    - if: '$CI_COMMIT_MESSAGE =~ /DEPLOY/'

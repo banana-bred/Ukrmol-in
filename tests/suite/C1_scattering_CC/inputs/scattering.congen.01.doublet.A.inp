@@ -1,0 +1,54 @@
+&state
+  sname = 'e + chlorous.acid_plus - doublet A',
+  megul = 70, ! unit to which output is saved
+  iscat = 2,  ! no phase correction necessary for target
+  symtyp = 2, ! D2h, C2v, etc. are of sym. type 2
+  qntot  = 2,0,0, ! triplet of numbers, e.g. 1,0,0 means 1 = Singlet, 0 = A1, etc
+  nelect = 25, ! number of electrons
+  nob  = 167, ! total number of orbitals for each symmetry
+  nob0 = 16, ! number of target orbitals for each symmetry
+  nbmx = 40000000, !Number of Mwords memory allocated for CSF generation
+  nrefo = 1, ! Number of quintets in reforb
+  reforb = 0,1,25,0,0, ! reference determinant
+  lndo = 150000000, ! memory control
+  lcdo = 2000, ! memory control
+/
+&wfngrp
+  gname = 'singlet A x continuum^1',
+  qntar = 1,0,0, ! coupling control
+  nelecg = 25, ! number of electrons to distribute among configurations
+  nrefog = 1, ! number of reference determinants
+  reforg = 0,1,25,0,0, ! movable electrons
+  ndprod = 3, ! number of sets of shells
+  nelecp = 20,4,1, ! number of electrons in each set
+  nshlp  = 1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,10, 0,11,16, 0,17,18, ! orbitals in each shell
+  mshl =   0,     0,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'triplet A x continuum^1',
+  qntar = 3,0,0, ! coupling control
+  nelecg = 25, ! number of electrons to distribute among configurations
+  nrefog = 1, ! number of reference determinants
+  reforg = 0,1,25,0,0, ! movable electrons
+  ndprod = 3, ! number of sets of shells
+  nelecp = 20,4,1, ! number of electrons in each set
+  nshlp  = 1,1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,10, 0,11,16, 0,17,18, ! orbitals in each shell
+  mshl =   0,     0,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/
+&wfngrp
+  gname = 'core^Nc cas^N-Nc+1',
+  qntar = -1,0,0, ! coupling control
+  nelecg = 25, ! number of electrons to distribute among configurations
+  nrefog = 1, ! number of reference determinants
+  reforg = 0,1,25,0,0, ! movable electrons
+  ndprod = 2, ! number of sets of shells
+  nelecp = 20,5, ! number of electrons in each set
+  nshlp  = 1,1,  ! number of shells (triplets) in each set
+  pqn  = 0,1,10, 0,11,16, ! orbitals in each shell
+  mshl =   0,     0, ! symmetry of shells above 
+  npcupf = 1, ! print coupling information
+/

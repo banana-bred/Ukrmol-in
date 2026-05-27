@@ -1,0 +1,26 @@
+&input
+  megul = 70,  ! input from module CONGEN
+  nfte = 29, ! Hamiltonian scratch file
+  icidg = 1,   ! 0 - do not diagonalize for parallel, 1 - do diagonalise Hamiltonian matrix for serial
+  iexpc = 1,   ! prototype CI expansion flag - 1 for scattering calculation
+  icitg = 1,   ! CI target flag - 1 = perform CI target contraction
+  idiag = 2,   ! matrix element evaluation flag - 2 = do not evaluate pure target integrals
+  nftg = 26,    ! CI target vectors switch - 0 = use scattering wavefunctions to generated (phase corrected) target wavefunctions
+  ntgsym = 4,  ! number of target state symmetries (>1 in CAS calculations)
+  mcont = 1,0,3,2,   ! lambda value ('symmetry') of the continuum orbitals associated with each target state
+  notgt = 35,46,22,35,  ! number of continuum orbitals associated with each target symmetry
+  numtgt = 7,6,4,3,  ! number of target states for each symmetries
+  ntgtf = 1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,4,4,4,  ! set number, on unit NFTG, which contains the required target state
+  ntgts = 1,2,3,4,5,6,7,1,2,3,4,5,6,1,2,3,4,1,2,3,  ! sequence number of the state within the set specified by NTGTF to be used as the target state
+  ukrmolp_ints = .true., ! commented out if you do not run UKRmol+ suite
+  nfti  = 16,  ! molecular integrals
+/
+&cinorn
+  name = 'Pyridine CI calculation - doublet B1',
+  nftw = 251,  ! output file with eigenstates
+!igh = 1,
+ !memp = 2.5,
+  NPFLG(1) = 0, ! no Hamiltonian matrix elements printed
+  NPFLG(2) = 0, ! print lowest 20 eigenvalues only
+  nciset = 1,
+/

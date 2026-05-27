@@ -1,0 +1,12 @@
+&input
+  megul = 730, ! input from module CONGEN
+  nfte  = 830, ! Hamiltonian scratch file
+  nfti  = 16,  ! molecular integrals
+/
+&cinorn
+  name = 'hydrogen.peroxide_plus_scattering CI calculation - triplet A',
+  nstat = 1,  ! number of CI eigenvalues
+  nftw = 26,  ! output file with eigenpairs
+  nciset = 2, ! index of calculated CI vectors within output file (0 = automatic indexing, but first must be 1)
+  igh = 1,    ! force dense diagonalization
+/

@@ -1,0 +1,12 @@
+&input
+  name = 'benzene_plus_scattering - Transition Moments',
+  ipol = 2, ! controls calculation of dipole polarizabilities, 0 = no calculation
+  ntgt = 16, ! number of CSF expansions used, this is the number of different output files to be read
+  nftg = 26, ! target eigenstates
+  nftint = 16, ! molecular integrals
+  nftsor = 710,730,711,731,712,732,713,733,714,734,715,735,716,736,717,737, ! unit numbers with output from CONGEN
+  ntgtf = 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, ! defines the set number, on unit NFTG where the CI vectors for this symmetry are to be found.
+  ntgtl = 2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, ! defines the sequence number, within the set specified by NTGTF, of the last CI vector to be used
+  npflg(9) = 1, ! prints computed moments
+  zlast = .true., ! when set to .true. identifies that this card deck is the last in the stack of &INPUT decks.
+/

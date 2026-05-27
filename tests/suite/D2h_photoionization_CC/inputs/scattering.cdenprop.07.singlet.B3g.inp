@@ -1,0 +1,17 @@
+&DENINP
+  lutdip  = 24,                     ! File unit for bound state transition dipoles.
+  luprop  = 16,                     ! File unit for input of property integrals.
+  lutargci= 26,                     ! File unit for target CI vectors from target run.
+  lupropw = 626,                    ! File unit for dipole output.
+  lucsf   = 70,  76,                ! File units with CSF for initial and final symmetry.
+  lucivec = 250, 256,               ! File units with target vectors for initial and final symmetry.
+  nstat   = 1,  0,                  ! Number of states to calculate dipoles for defaults to all (0,0).
+  nciset  = 1,  1,                  ! Set of CI coefficients in the CI files.
+  numtgt  = 5,2,2,5,2,2,            ! Number of target states per symmetry.
+  ibra_or_ket_bound=1,              ! Set which are the bound states - only needed for Dyson orbital output when iuse_bound=0 and both bra and ket contain continuum orbitals.
+  itarget_spin=2,2,2,2,2,2,2,2,     ! Array of dim no_target_symmetries: defaults to doublet.
+  target_phase_correction=.false.,  ! already resolved in scattering-scatci
+  isw = 1,                          ! Disregard nuclear contribution to dipole elements
+/
+&L2CONTRACT
+/

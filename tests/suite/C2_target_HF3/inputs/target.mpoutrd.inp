@@ -1,0 +1,10 @@
+&input
+molpro_file = 'outputs/target.molpro.out'
+swmos_in    = 'inputs/target.swedmos.inp'
+title = 'hydrogen.peroxide_plus'
+nobt  = 19,19, !number of orbitals in each symmetry
+ztail = .false.,
+iu1el = 2, ! input from swmol3
+/
+&header
+/
