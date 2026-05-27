@@ -184,6 +184,7 @@
          procedure :: unformatted_write
          procedure :: stream_write
 
+         ! Modified 2026 by Josh Forer: DTIO + gfortran 16 workaround
          ! generic :: write(formatted) => formatted_write
          ! generic :: write(unformatted) => unformatted_write
       end type CIvect

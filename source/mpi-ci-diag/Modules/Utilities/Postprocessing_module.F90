@@ -18,6 +18,12 @@
 !     You should have received a copy of the GNU General Public License
 !     along with  UKRmol-in (in source/COPYING). Alternatively, you can also visit
 !     <https://www.gnu.org/licenses/>.
+! ------------------------------------------------------------------------------
+!   Modified by Josh Forer <j.forer@posteo.net> 2026:
+!     Work around gcc-fortran 16 and -fdefault-integer-8 (DTIO default 8-byte
+!     integers are not compatible)  by routing gcc-fortran builds through the
+!     existing intel_bug_workaround path
+! ------------------------------------------------------------------------------
 
 !> \brief   Further processing of the diagonalization results
 !> \authors J Benda

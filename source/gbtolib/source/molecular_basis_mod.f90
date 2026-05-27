@@ -1705,6 +1705,7 @@ end type molecular_orbital_basis_obj
         ! - In the second step (ie. (kl|pq] -> (kl|ij)), the number of blocks is retrieved from the R-tensor itself, and blocks
         !   offsets in the linear storage arrays are stored for later convenience.
 
+        ! Modified, Josh Forer 2026, omp master -> omp masked
         !$omp parallel shared(nthreads)
         !$omp masked
         nthreads = omp_get_num_threads()
@@ -2551,6 +2552,7 @@ end type molecular_orbital_basis_obj
         allocate(Wi(size(Ri, 1), size(Ri, 2)), stat = ierr1)
         allocate(Wv(size(Rv, 1), size(Rv, 2)), stat = ierr2)
 
+        ! Modified, Josh Forer 2026, omp master -> omp masked
         !$omp parallel
         !$omp masked
         nthreads = omp_get_num_threads()
